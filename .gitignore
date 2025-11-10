@@ -21,3 +21,4 @@ build/
 # Ignore Python cache (if Python backend)
 __pycache__/
 *.pyc
+.env
