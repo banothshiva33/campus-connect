@@ -5,44 +5,36 @@ const connectDB = require('./config/database');
 const path = require('path');
 const fs = require('fs');
 
-// Load env vars
 dotenv.config();
 
-// Connect to database
 connectDB();
 
 const app = express();
 
-// Increase payload size limit for image uploads
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// Middleware
 app.use(cors());
 
-// Create uploads directory if it doesn't exist
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
     fs.mkdirSync(uploadsDir, { recursive: true });
     console.log('📁 Uploads directory created at:', uploadsDir);
 }
 
-// Serve static files from uploads directory
 app.use('/uploads', express.static(uploadsDir, {
     fallthrough: true,
     setHeaders: (res, path) => {
-        res.set('Cache-Control', 'public, max-age=86400'); // Cache for 1 day
+        res.set('Cache-Control', 'public, max-age=86400'); 
     }
 }));
 
-// Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/events', require('./routes/events'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/about', require('./routes/about'));
 app.use('/api/notifications', require('./routes/notifications'));
 
-// Basic route
 app.get('/', (req, res) => {
     res.json({ 
         message: 'CampusConnect API is running!',
@@ -57,7 +49,6 @@ app.get('/', (req, res) => {
     });
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
     console.error('❌ Server error:', err.stack);
     

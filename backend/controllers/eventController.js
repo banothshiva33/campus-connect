@@ -5,10 +5,6 @@ const User = require('../models/User');
 const { sendRegistrationConfirmation } = require('../utils/emailService');
 const path = require('path');
 const fs = require('fs');
-
-// @desc    Create new event
-// @route   POST /api/events
-// @access  Private (Teacher/Admin)
 exports.createEvent = async (req, res) => {
     try {
         console.log('🎯 Creating new event...');
@@ -16,7 +12,6 @@ exports.createEvent = async (req, res) => {
         console.log('Uploaded file:', req.file);
         console.log('User creating event:', req.user.id);
 
-        // Validate required fields
         const requiredFields = ['title', 'description', 'date', 'category', 'department', 'venue'];
         const missingFields = requiredFields.filter(field => !req.body[field] || req.body[field].trim() === '');
         
@@ -27,20 +22,16 @@ exports.createEvent = async (req, res) => {
             });
         }
 
-        // Handle image file
         let imagePath = '';
         if (req.file) {
-            // Verify the file was actually saved
             if (fs.existsSync(req.file.path)) {
                 imagePath = `/uploads/${req.file.filename}`;
                 console.log('✅ Image saved successfully:', imagePath);
             } else {
                 console.log('❌ Image file not found at path:', req.file.path);
-                // Continue without image if file saving failed
+
             }
         }
-
-        // Prepare event data
         const eventData = {
             title: req.body.title.trim(),
             description: req.body.description.trim(),
@@ -558,9 +549,7 @@ exports.registerForEvent = async (req, res) => {
     }
 };
 
-// @desc    Get user's registered events
-// @route   GET /api/events/my/registrations
-// @access  Private
+
 exports.getMyRegistrations = async (req, res) => {
     try {
         const userId = req.user.id;
@@ -592,9 +581,6 @@ exports.getMyRegistrations = async (req, res) => {
     }
 };
 
-// @desc    Check if user is registered for event
-// @route   GET /api/events/:id/check-registration
-// @access  Private
 exports.checkRegistration = async (req, res) => {
     try {
         const eventId = req.params.id;
