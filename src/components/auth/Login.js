@@ -31,7 +31,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post('https://campusconnect-backend-ux8p.onrender.com/api/auth/login', formData);
       
       // Store user data and token
       const userData = {

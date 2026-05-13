@@ -19,7 +19,7 @@ const MyEvents = () => {
 
   const fetchMyRegistrations = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/events/my/registrations');
+      const response = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events/my/registrations');
       setRegistrations(response.data);
     } catch (error) {
       console.error('Error fetching registrations:', error);
@@ -28,7 +28,7 @@ const MyEvents = () => {
 
   const fetchCreatedEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/events');
+      const response = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events');
       const myEvents = response.data.events.filter(event => event.createdBy._id === user._id);
       setCreatedEvents(myEvents);
     } catch (error) {

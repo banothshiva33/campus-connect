@@ -14,14 +14,14 @@ const Dashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const eventsRes = await axios.get('http://localhost:5000/api/events');
+      const eventsRes = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events');
       const events = eventsRes.data.events;
       
       // Calculate stats based on user role
       let userStats = {};
       
       if (isStudent()) {
-        const registrationsRes = await axios.get('http://localhost:5000/api/events/my/registrations');
+        const registrationsRes = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events/my/registrations');
         const registrations = registrationsRes.data;
         
         userStats = {
@@ -37,7 +37,7 @@ const Dashboard = () => {
           upcomingEvents: myEvents.filter(event => new Date(event.date) > new Date()).length
         };
       } else if (isAdmin()) {
-        const usersRes = await axios.get('http://localhost:5000/api/users');
+        const usersRes = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/users');
         userStats = {
           totalUsers: usersRes.data.length,
           totalEvents: events.length,

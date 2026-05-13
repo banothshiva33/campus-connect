@@ -20,7 +20,7 @@ const Events = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/events');
+      const response = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events');
       setEvents(response.data.events);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -31,7 +31,7 @@ const Events = () => {
 
   const fetchUserRegistrations = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/events/my/registrations', {
+      const response = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events/my/registrations', {
         headers: { 
           Authorization: `Bearer ${user.token}` 
         }
@@ -70,7 +70,7 @@ const Events = () => {
   const getEventBackground = (event) => {
     if (event.image) {
       return {
-        backgroundImage: `url(http://localhost:5000${event.image})`,
+        backgroundImage: `url(https://campusconnect-backend-ux8p.onrender.com${event.image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       };

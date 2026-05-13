@@ -14,7 +14,7 @@ const Calendar = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/events');
+      const response = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events');
       setEvents(response.data.events);
     } catch (error) {
       console.error('Error fetching events:', error);

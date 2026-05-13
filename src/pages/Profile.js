@@ -24,7 +24,7 @@ const Profile = () => {
       setLoading(true);
       
       if (isStudent()) {
-        const registrationsRes = await axios.get('http://localhost:5000/api/events/my/registrations', {
+        const registrationsRes = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events/my/registrations', {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setRegistrations(registrationsRes.data.registrations || []);
@@ -41,7 +41,7 @@ const Profile = () => {
       }
       
       if (isTeacher()) {
-        const eventsRes = await axios.get('http://localhost:5000/api/events');
+        const eventsRes = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events');
         const myEvents = eventsRes.data.events.filter(event => 
           event.createdBy._id === user._id
         );
@@ -108,7 +108,7 @@ const Profile = () => {
       const formData = new FormData();
       formData.append('profilePhoto', file);
 
-      const response = await axios.put('http://localhost:5000/api/users/profile', formData, {
+      const response = await axios.put('https://campusconnect-backend-ux8p.onrender.com/api/users/profile', formData, {
         headers: {
           'Authorization': `Bearer ${user.token}`,
           'Content-Type': 'multipart/form-data'
@@ -132,7 +132,7 @@ const Profile = () => {
     setSavingProfile(true);
 
     try {
-      const response = await axios.put('http://localhost:5000/api/users/profile', profileData, {
+      const response = await axios.put('https://campusconnect-backend-ux8p.onrender.com/api/users/profile', profileData, {
         headers: {
           'Authorization': `Bearer ${user.token}`,
           'Content-Type': 'application/json'
@@ -168,7 +168,7 @@ const Profile = () => {
 
   const getProfilePhotoUrl = () => {
     if (user.profilePhoto) {
-      return `http://localhost:5000${user.profilePhoto}`;
+      return `https://campusconnect-backend-ux8p.onrender.com${user.profilePhoto}`;
     }
     return null;
   };

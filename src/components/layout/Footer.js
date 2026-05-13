@@ -27,9 +27,9 @@ const Footer = () => {
             Connecting students, teachers, and administrators in one platform.
           </p>
           <div style={{ display: 'flex', gap: '1rem' }}>
-            <div style={{ background: '#374151', padding: '0.5rem', borderRadius: '8px' }}>📘</div>
-            <div style={{ background: '#374151', padding: '0.5rem', borderRadius: '8px' }}>📱</div>
-            <div style={{ background: '#374151', padding: '0.5rem', borderRadius: '8px' }}>🐦</div>
+            <div style={{ background: '#374151', padding: '0.5rem', borderRadius: '8px' }}></div>
+            <div style={{ background: '#374151', padding: '0.5rem', borderRadius: '8px' }}></div>
+            <div style={{ background: '#374151', padding: '0.5rem', borderRadius: '8px' }}></div>
           </div>
         </div>
 
@@ -59,9 +59,9 @@ const Footer = () => {
         <div>
           <h4 style={{ marginBottom: '1rem', fontSize: '1.1rem' }}>Contact Info</h4>
           <div style={{ color: '#cbd5e1', lineHeight: '1.6' }}>
-            <p>📧 support@campusconnect.edu</p>
-            <p>📞 +1 (555) 123-4567</p>
-            <p>🏢 University Campus, Education City</p>
+            <p> support@campusconnect.edu</p>
+            <p> +1 (555) 123-4567</p>
+            <p> University Campus, Education City</p>
           </div>
         </div>
       </div>

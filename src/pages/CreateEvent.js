@@ -85,7 +85,7 @@ const CreateEvent = () => {
 
       console.log('Submitting event data...');
       
-      const response = await axios.post('http://localhost:5000/api/events', submitData, {
+      const response = await axios.post('https://campusconnect-backend-ux8p.onrender.com/api/events', submitData, {
         headers: {
           'Authorization': `Bearer ${user.token}`,
           'Content-Type': 'multipart/form-data'

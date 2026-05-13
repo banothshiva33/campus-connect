@@ -28,14 +28,14 @@ const EventDetail = () => {
 
   const fetchEventDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/events/${eventId}`);
-      setEvent(response.data);
+      const response = await axios.get(`https://campusconnect-backend-ux8p.onrender.com/api/events/${eventId}`);
+      setEvent(response.data.event);
       
       // Check if user is registered
       if (user) {
         try {
           const registrationCheck = await axios.get(
-            `http://localhost:5000/api/events/${eventId}/check-registration`,
+            `https://campusconnect-backend-ux8p.onrender.com/api/events/${eventId}/check-registration`,
             {
               headers: {
                 Authorization: `Bearer ${user.token}`
@@ -86,7 +86,7 @@ const EventDetail = () => {
     setRegistering(true);
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/events/${eventId}/register`,
+        `https://campusconnect-backend-ux8p.onrender.com/api/events/${eventId}/register`,
         formData,
         {
           headers: {
@@ -326,24 +326,24 @@ const EventDetail = () => {
       <div className="grid grid-2" style={{ gap: '2rem' }}>
         {/* Event Image and Details */}
         <div>
-          <div 
-            style={{ 
-              height: '400px', 
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
-              borderRadius: '12px',
-              marginBottom: '1.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              fontSize: '2rem',
-              fontWeight: 'bold',
-              textAlign: 'center',
-              padding: '2rem'
-            }}
-          >
-            {event.title}
-          </div>
+<div
+  style={{
+    height: '400px',
+    borderRadius: '12px',
+    marginBottom: '1.5rem',
+    overflow: 'hidden'
+  }}
+>
+  <img
+    src={`https://campusconnect-backend-ux8p.onrender.com${event.image}`}
+    alt={event.title}
+    style={{
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover'
+    }}
+  />
+</div>
 
           <div className="card">
             <h2 style={{ marginBottom: '1rem' }}>Event Details</h2>

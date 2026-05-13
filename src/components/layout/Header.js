@@ -104,17 +104,17 @@ const Header = () => {
         <ul className="nav-links" style={navLinksStyle}>
           <li>
             <Link to="/" style={linkStyle}>
-              🏠 Home
+              Home
             </Link>
           </li>
           <li>
             <Link to="/events" style={linkStyle}>
-              📅 Events
+              Events
             </Link>
           </li>
           <li>
             <Link to="/calendar" style={linkStyle}>
-              🗓️ Calendar
+              Calendar
             </Link>
           </li>
           
@@ -134,7 +134,7 @@ const Header = () => {
                 <>
                   <li>
                     <Link to="/admin" style={linkStyle}>
-                      ⚙️ Admin
+                       Admin
                     </Link>
                   </li>
                   <li>
@@ -178,7 +178,7 @@ const Header = () => {
                     e.target.style.background = 'rgba(255,255,255,0.15)';
                   }}
                 >
-                  🚪 Logout
+                   Logout
                 </button>
               </li>
             </>
@@ -186,7 +186,7 @@ const Header = () => {
             <>
               <li>
                 <Link to="/login" style={linkStyle}>
-                  🔑 Login
+                   Login
                 </Link>
               </li>
               <li>
@@ -196,7 +196,7 @@ const Header = () => {
                   background: 'white',
                   border: 'none'
                 }}>
-                  ✨ Register
+                   Register
                 </Link>
               </li>
             </>
