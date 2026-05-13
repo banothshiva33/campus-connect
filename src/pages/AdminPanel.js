@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
@@ -16,7 +16,7 @@ const AdminPanel = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/users');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`);
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -25,7 +25,7 @@ const AdminPanel = () => {
 
   const fetchStats = async () => {
     try {
-      const eventsRes = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events');
+      const eventsRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/events`);
       const events = eventsRes.data.events;
       
       setStats({

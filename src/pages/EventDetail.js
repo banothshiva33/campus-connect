@@ -28,14 +28,14 @@ const EventDetail = () => {
 
   const fetchEventDetails = async () => {
     try {
-      const response = await axios.get(`https://campusconnect-backend-ux8p.onrender.com/api/events/${eventId}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/events/${eventId}`);
       setEvent(response.data.event);
       
       // Check if user is registered
       if (user) {
         try {
           const registrationCheck = await axios.get(
-            `https://campusconnect-backend-ux8p.onrender.com/api/events/${eventId}/check-registration`,
+            `${process.env.REACT_APP_API_URL}/api/events/${eventId}/check-registration`,
             {
               headers: {
                 Authorization: `Bearer ${user.token}`
@@ -86,7 +86,7 @@ const EventDetail = () => {
     setRegistering(true);
     try {
       const response = await axios.post(
-        `https://campusconnect-backend-ux8p.onrender.com/api/events/${eventId}/register`,
+        `${process.env.REACT_APP_API_URL}/api/events/${eventId}/register`,
         formData,
         {
           headers: {
@@ -335,7 +335,7 @@ const EventDetail = () => {
   }}
 >
   <img
-    src={`https://campusconnect-backend-ux8p.onrender.com${event.image}`}
+    src={`${process.env.REACT_APP_API_URL}${event.image}`}
     alt={event.title}
     style={{
       width: '100%',

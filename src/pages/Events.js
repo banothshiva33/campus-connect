@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
@@ -20,7 +20,7 @@ const Events = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/events`);
       setEvents(response.data.events);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -31,7 +31,7 @@ const Events = () => {
 
   const fetchUserRegistrations = async () => {
     try {
-      const response = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events/my/registrations', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/events/my/registrations`, {
         headers: { 
           Authorization: `Bearer ${user.token}` 
         }
@@ -70,7 +70,7 @@ const Events = () => {
   const getEventBackground = (event) => {
     if (event.image) {
       return {
-        backgroundImage: `url(https://campusconnect-backend-ux8p.onrender.com${event.image})`,
+        backgroundImage: `url(${process.env.REACT_APP_API_URL}${event.image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       };

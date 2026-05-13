@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Calendar = () => {
@@ -14,7 +14,7 @@ const Calendar = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/events`);
       setEvents(response.data.events);
     } catch (error) {
       console.error('Error fetching events:', error);

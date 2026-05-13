@@ -1,4 +1,4 @@
-﻿import React, { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
@@ -30,7 +30,7 @@ const Register = () => {
     setError('');
 
     try {
-      const response = await axios.post('https://campusconnect-backend-ux8p.onrender.com/api/auth/register', formData);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/register`, formData);
       
       // Store user data and token
       const userData = {

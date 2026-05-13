@@ -1,4 +1,4 @@
-﻿import React, { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -85,7 +85,7 @@ const CreateEvent = () => {
 
       console.log('Submitting event data...');
       
-      const response = await axios.post('https://campusconnect-backend-ux8p.onrender.com/api/events', submitData, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/events`, submitData, {
         headers: {
           'Authorization': `Bearer ${user.token}`,
           'Content-Type': 'multipart/form-data'

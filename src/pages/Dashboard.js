@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -14,14 +14,14 @@ const Dashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const eventsRes = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events');
+      const eventsRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/events`);
       const events = eventsRes.data.events;
       
       // Calculate stats based on user role
       let userStats = {};
       
       if (isStudent()) {
-        const registrationsRes = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/events/my/registrations');
+        const registrationsRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/events/my/registrations`);
         const registrations = registrationsRes.data;
         
         userStats = {
@@ -37,7 +37,7 @@ const Dashboard = () => {
           upcomingEvents: myEvents.filter(event => new Date(event.date) > new Date()).length
         };
       } else if (isAdmin()) {
-        const usersRes = await axios.get('https://campusconnect-backend-ux8p.onrender.com/api/users');
+        const usersRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`);
         userStats = {
           totalUsers: usersRes.data.length,
           totalEvents: events.length,
